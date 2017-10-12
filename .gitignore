@@ -15,3 +15,4 @@ packages/
 # OS X files
 .DS_Store
 .AppleDouble
+/.vs/JsonConfig/v15/sqlite3
