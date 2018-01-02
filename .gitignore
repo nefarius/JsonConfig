@@ -17,3 +17,4 @@ packages/
 .AppleDouble
 /.vs/JsonConfig/v15/sqlite3
 /.vs/JsonConfig/v15/Server/sqlite3
+/.tmp/Nuke.MSBuildLocator
