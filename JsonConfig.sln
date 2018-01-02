@@ -50,7 +50,6 @@ Global
 		{402F5791-B95A-4226-A3B1-5961B24AED2D}.Default|x86.ActiveCfg = Debug|Any CPU
 		{402F5791-B95A-4226-A3B1-5961B24AED2D}.Default|x86.Build.0 = Debug|Any CPU
 		{402F5791-B95A-4226-A3B1-5961B24AED2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{402F5791-B95A-4226-A3B1-5961B24AED2D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{402F5791-B95A-4226-A3B1-5961B24AED2D}.Release|x86.ActiveCfg = Release|Any CPU
 		{402F5791-B95A-4226-A3B1-5961B24AED2D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
