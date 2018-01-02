@@ -1,5 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net40</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -9,6 +12,22 @@
     <OutputType>Library</OutputType>
     <RootNamespace>JsonConfig</RootNamespace>
     <AssemblyName>JsonConfig</AssemblyName>
+    <PackageId>JsonConfig</PackageId>
+    <Authors>Timo Dörr, Hüseyin Uslu, Carlos Gustavo Sarmiento, Benjamin Höglinger-Stelzer</Authors>
+    <Company>Benjamin Höglinger-Stelzer</Company>
+    <Summary>simple configuration library using JSON and C# 4.0 dynamic feature</Summary>
+    <Description>JsonConfig is a simple to use configuration library, allowing JSON based config files for your C#/.NET application instead of cumbersome web.config/application.config xml files.
+
+It is based on JsonFX and C# 4.0 dynamic feature. Allows putting your programs config file into .json files, where a default config can be embedded as a resource or put in the (web-)application folder. Configuration can be accessed via dynamic types, no custom classes or any other stub code is necessary.
+
+JsonConfig brings support for config inheritance, meaning a set of configuration files can be used to have a single, scoped configuration at runtime which is a merged version of all provided configuration files.</Description>
+    <Product>simple configuration library using JSON and C# 4.0 dynamic feature</Product>
+    <Copyright>Copyright (c) 2012 Timo Dörr, 2017 Benjamin Höglinger-Stelzer</Copyright>
+    <PackageLicenseUrl>https://github.com/nefarius/JsonConfig/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/nefarius/JsonConfig</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nefarius/JsonConfig</RepositoryUrl>
+    <PackageTags>json, config, configuration</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>True</DebugSymbols>
@@ -44,10 +63,6 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -55,15 +70,6 @@
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="JsonNetAdapter.cs" />
-    <Compile Include="JsonConfigExtensions.cs" />
-    <Compile Include="Merger.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="ConfigObjects.cs" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

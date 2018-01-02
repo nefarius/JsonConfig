@@ -16,3 +16,4 @@ packages/
 .DS_Store
 .AppleDouble
 /.vs/JsonConfig/v15/sqlite3
+/.vs/JsonConfig/v15/Server/sqlite3
