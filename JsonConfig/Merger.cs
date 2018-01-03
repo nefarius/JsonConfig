@@ -32,11 +32,11 @@ namespace JsonConfig
     public static class Merger
     {
         /// <summary>
-        ///     Merge the specified obj2 and obj1, where obj1 has precendence and
+        ///     Merge the specified obj2 and obj1, where obj1 has precedence and
         ///     overrules obj2 if necessary.
         /// </summary>
         /// <exception cref='TypeMissmatchException'>
-        ///     Is thrown when the type missmatch exception.
+        ///     Is thrown when the type mismatch exception.
         /// </exception>
         public static dynamic Merge(dynamic mObj1, dynamic mObj2)
         {
