@@ -12,26 +12,22 @@ namespace JsonConfig
         {
             var newExpando = new ExpandoObject();
 
-            var edict = (IDictionary<string, object>)newExpando;
+            var edict = (IDictionary<string, object>) newExpando;
 
             foreach (var kvp in data)
-            {
                 edict[kvp.Key] = TransformByType(kvp.Value);
-            }
 
             return newExpando;
         }
 
         private static object TransformByType(object value)
         {
-            if (value is ExpandoObject)
+            switch (value)
             {
-                return Transform((ExpandoObject)value);
-            }
-
-            if (value is List<object>)
-            {
-                return ConvertList((List<object>)value);
+                case ExpandoObject _:
+                    return Transform((ExpandoObject) value);
+                case List<object> _:
+                    return ConvertList((List<object>) value);
             }
 
             return value;
@@ -41,14 +37,12 @@ namespace JsonConfig
         {
             var hasSingleType = true;
 
-            ArrayList tList = new ArrayList(list.Count);
+            var tList = new ArrayList(list.Count);
 
             Type listType = null;
 
             if (list.Count > 0)
-            {
                 listType = list.First().GetType();
-            }
 
             foreach (var v in list)
             {
