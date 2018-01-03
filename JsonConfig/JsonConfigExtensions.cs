@@ -33,7 +33,7 @@ namespace JsonConfig.Extensions
                             result = match.Value;
                         }
                     }
-                    catch (RuntimeBinderException ex)
+                    catch (RuntimeBinderException)
                     {
                         //Occurs if the value is not directly convertible to the default type. Attempt the IConvertible method of casting instead.
                         result = Convert.ChangeType(match.Value, typeof(T));    

@@ -28,6 +28,7 @@ JsonConfig brings support for config inheritance, meaning a set of configuration
     <RepositoryUrl>https://github.com/nefarius/JsonConfig</RepositoryUrl>
     <PackageTags>json, config, configuration</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>True</DebugSymbols>
