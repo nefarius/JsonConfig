@@ -121,7 +121,7 @@ namespace JsonConfig
                 var lastWriteTime = File.GetLastWriteTime(info.FullName);
                 if (lastWriteTime.Subtract(lastRead).TotalMilliseconds > 100)
                 {
-                    Console.WriteLine("user configuration has changed, updating config information");
+                    // Console.WriteLine("user configuration has changed, updating config information");
                     try
                     {
                         User = ParseJson(File.ReadAllText(info.FullName));
@@ -135,7 +135,7 @@ namespace JsonConfig
                         }
                         catch (Exception)
                         {
-                            Console.WriteLine("updating user config failed.");
+                            // Console.WriteLine("updating user config failed.");
                             throw;
                         }
                     }
@@ -184,20 +184,11 @@ namespace JsonConfig
 
             var info = new DirectoryInfo(path);
             if (recursive)
-                foreach (var dir in info.GetDirectories())
-                {
-                    Console.WriteLine("reading in folder {0}", dir);
-                    config = ApplyFromDirectoryInfo(dir, config, true);
-                }
+                config = info.GetDirectories().Aggregate(config, (current, dir) => ApplyFromDirectoryInfo(dir, current, true));
 
             // find all files
             var files = info.GetFiles();
-            foreach (var file in files)
-            {
-                Console.WriteLine("reading in file {0}", file);
-                config = ApplyJsonFromFileInfo(file, config);
-            }
-            return config;
+            return files.Aggregate(config, (current, file) => ApplyJsonFromFileInfo(file, current));
         }
 
         public static ConfigObject ApplyFromDirectoryInfo(DirectoryInfo info, ConfigObject config = null,
