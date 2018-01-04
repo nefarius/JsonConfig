@@ -40,8 +40,6 @@ namespace JsonConfig
         public static dynamic Default = new ConfigObject();
         public static dynamic User;
 
-        public static string DefaultEnding = ".conf";
-
         private static dynamic _globalConfig;
         private static FileSystemWatcher _userConfigWatcher;
 
