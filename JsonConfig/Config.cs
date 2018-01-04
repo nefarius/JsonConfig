@@ -60,6 +60,7 @@ namespace JsonConfig
             var executionPath = AppDomain.CurrentDomain.BaseDirectory;
             var userConfigFilename = "settings";
 
+            #region UGLY HACK
             // TODO this is ugly but makes life easier
             // we are run from the IDE, so the settings.conf needs
             // to be searched two levels up
@@ -67,6 +68,7 @@ namespace JsonConfig
                 executionPath = executionPath.Replace("/bin/Debug", ""); // for Unix-like
             if (executionPath.EndsWith(@"\bin\Debug\"))
                 executionPath = executionPath.Replace(@"\bin\Debug", ""); // for Win
+            #endregion
 
             var d = new DirectoryInfo(executionPath);
             var userConfig = (from FileInfo fi in d.GetFiles()
