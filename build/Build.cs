@@ -53,7 +53,8 @@ class Build : NukeBuild
                 .SetConfiguration(Configuration)
                 .EnableNoRestore()
                 .SetAssemblyVersion(AppVeyor.Instance.BuildVersion)
-                .SetFileVersion(AppVeyor.Instance.BuildVersion));
+                .SetFileVersion(AppVeyor.Instance.BuildVersion)
+                .SetVersionSuffix(AppVeyor.Instance.BuildVersion));
         });
 
 }
