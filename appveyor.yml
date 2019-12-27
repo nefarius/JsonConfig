@@ -4,5 +4,7 @@ configuration:
 - Release
 install:
 - git submodule update --init --recursive
+before_build:
+- nuget restore
 build:
   project: $(APPVEYOR_BUILD_FOLDER)\$(APPVEYOR_PROJECT_NAME).sln
