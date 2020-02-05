@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using JsonConfig.Extensions;
 
 namespace JsonConfig
 {
@@ -15,7 +16,7 @@ namespace JsonConfig
             var edict = (IDictionary<string, object>) newExpando;
 
             foreach (var kvp in data)
-                edict[kvp.Key] = TransformByType(kvp.Value);
+                edict[kvp.Key.FirstCharToUpper()] = TransformByType(kvp.Value);
 
             return newExpando;
         }
