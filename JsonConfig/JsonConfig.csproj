@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net40</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
   <PropertyGroup>
@@ -12,7 +12,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>JsonConfig</RootNamespace>
     <AssemblyName>JsonConfig</AssemblyName>
-    <PackageId>JsonConfig</PackageId>
+    <PackageId>Nefarius.JsonConfig</PackageId>
     <Authors>Timo Dörr, Hüseyin Uslu, Carlos Gustavo Sarmiento, Benjamin Höglinger-Stelzer</Authors>
     <Company>Benjamin Höglinger-Stelzer</Company>
     <Summary>simple configuration library using JSON and C# 4.0 dynamic feature</Summary>
@@ -23,12 +23,12 @@ It is based on JsonFX and C# 4.0 dynamic feature. Allows putting your programs c
 JsonConfig brings support for config inheritance, meaning a set of configuration files can be used to have a single, scoped configuration at runtime which is a merged version of all provided configuration files.</Description>
     <Product>simple configuration library using JSON and C# 4.0 dynamic feature</Product>
     <Copyright>Copyright (c) 2012 Timo Dörr, 2017 Benjamin Höglinger-Stelzer</Copyright>
-    <PackageLicenseUrl>https://github.com/nefarius/JsonConfig/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/nefarius/JsonConfig</PackageProjectUrl>
     <RepositoryUrl>https://github.com/nefarius/JsonConfig</RepositoryUrl>
     <PackageTags>json, config, configuration</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>1.0.2</Version>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>True</DebugSymbols>
@@ -64,13 +64,7 @@ JsonConfig brings support for config inheritance, meaning a set of configuration
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Web.Extensions" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 </Project>
