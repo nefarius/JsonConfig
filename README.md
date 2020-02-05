@@ -1,6 +1,7 @@
 # JsonConfig
 
 ## About
+
 JsonConfig is a simple to use configuration library, allowing JSON based config files for your C#/.NET application instead of cumbersome web.config/application.config xml files.
 
 It is based on [Newtonsoft Json.NET](https://www.newtonsoft.com/json) and C# 4.0 dynamic feature. Allows putting your programs config file into `.json` files, where a default config can be embedded as a resource or put in the (web-)application folder. Configuration can be accessed via dynamic types, no custom classes or any other stub code is necessary.
@@ -8,14 +9,16 @@ It is based on [Newtonsoft Json.NET](https://www.newtonsoft.com/json) and C# 4.0
 JsonConfig brings support for *config inheritance*, meaning a set of configuration files can be used to have a single, scoped configuration at runtime which is a merged version of all provided configuration files.
 
 ## Example
+
 Since my lack of skills in writing good examples into a documentation file, it is best to take a look at the examples/ folder with a complete commented .sln which will give you a better understanding (TODO).
 
 ### Getting started
-Usually the developer wants a default configuration that is used when no configuration by the user is present whatsoever. Often, this configuration is just hardcoded default values within the code. With JsonConfig there is no need for hardcoding, we simply create a default.conf file and embedd it as a resource.
+
+Usually the developer wants a default configuration that is used when no configuration by the user is present whatsoever. Often, this configuration is just hardcoded default values within the code. With JsonConfig there is no need for hardcoding, we simply create a default.conf file and embed it as a resource.
 
 Let's create a sample default.conf for a hypothetical grocery store:
 
-```
+```json
 # Lines beginning with # are skipped when the JSON is parsed, so we can
 # put comments into our JSON configuration files
 {
@@ -27,6 +30,7 @@ Let's create a sample default.conf for a hypothetical grocery store:
 ```
 
 JsonConfig automatically scan's all assemblies for the presence of a default.conf file, so we do not have to add any boilerplate code and can directly dive in:
+
 ```csharp
 // exmaple code using our configuration file
 using JsonConfig;
@@ -47,11 +51,12 @@ However, the developer wants the user to make his own configuration file. JsonCo
 ```
 # sample settings.conf
 {
-	Fruits: [ "melon", "peach" ]	
+	Fruits: [ "melon", "peach" ]
 }
 ```
 
 The settings.conf and the default.conf are then merged in a clever way and provided via the *Global* configuration.
+
 ```csharp
 public void PrintInfo () {
 	// will result in apple, banana, pear 
@@ -72,6 +77,7 @@ public void PrintInfo () {
 ```
 
 ### Nesting objects
+
 We are not bound to any hierarchies, any valid JSON is a valid configuration object. Take for example a hypothetical webserver configuration:
 
 ```
@@ -84,7 +90,7 @@ We are not bound to any hierarchies, any valid JSON is a valid configuration obj
 		{
 			Path: "/srv/www/example/",
 			Domain: "example.com",
-			Contact: "admin@example.com"	
+			Contact: "admin@example.com"
 		},
 		{
 			Path: "/srv/www/somedomain/",
@@ -114,7 +120,8 @@ public void StartWebserver () {
 ```
 
 ### "Magic" prevention of null pointer exceptions
-Choosing reasonable default values is only a matter of supplying a good default.conf. But using some C# 4.0 dynamic "magic", non-existant configuration values will not throw a NullPointer exception:
+
+Choosing reasonable default values is only a matter of supplying a good default.conf. But using some C# 4.0 dynamic "magic", non-existent configuration values will not throw a NullPointer exception:
 
 ```csharp
 // we are lazy and do not want to give default values for configuration
@@ -134,21 +141,22 @@ if (Config.Global.nonexistant.field.that.never.will.be.given) {
 
 // when the configuration value is cast to string, it will be null if not
 // given
-if (string.IsNullOrEmpty (Config.Global.some.nonexistant.nested.field)) {
+if (string.IsNullOrEmpty (Config.Global.some.nonexistent.nested.field)) {
 	// will most likely be run all the times
 }
 ```
 
 The "magic" allows you to cast a not-yet existing field to common types, which will then have empty or default values:
+
 ```csharp
-foreach (string name in Config.Global.NonExistantField as string[]) {
+foreach (string name in Config.Global.NonExistentField as string[]) {
 	// instead of being cast to null, if a non-existing field is cast to string[] it
 	// will just be an empty array: string[] { }
 	Console.WriteLine (name);
 }
 
 // works for nullable types, too. Nullable types will
-// cast to null if not exsisting in the config.
+// cast to null if not existing in the config.
 var processFiles = (bool?) Config.Global.ProcessFiles;
 if (processFiles != null) {
 	// will only be run if ProcessFiles is present in the config
