@@ -1,5 +1,7 @@
 # JsonConfig
 
+[![Build status](https://ci.appveyor.com/api/projects/status/lklr7arqjerpnq31?svg=true)](https://ci.appveyor.com/project/nefarius/jsonconfig) ![Nuget](https://img.shields.io/nuget/dt/Nefarius.JsonConfig)
+
 ## About
 
 JsonConfig is a simple to use configuration library, allowing JSON based config files for your C#/.NET application instead of cumbersome web.config/application.config xml files.
