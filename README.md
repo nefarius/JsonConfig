@@ -8,11 +8,7 @@ It is based on [Newtonsoft Json.NET](https://www.newtonsoft.com/json) and C# 4.0
 
 JsonConfig brings support for *config inheritance*, meaning a set of configuration files can be used to have a single, scoped configuration at runtime which is a merged version of all provided configuration files.
 
-## Example
-
-Since my lack of skills in writing good examples into a documentation file, it is best to take a look at the examples/ folder with a complete commented .sln which will give you a better understanding (TODO).
-
-### Getting started
+## Getting started
 
 Usually the developer wants a default configuration that is used when no configuration by the user is present whatsoever. Often, this configuration is just hardcoded default values within the code. With JsonConfig there is no need for hardcoding, we simply create a default.conf file and embed it as a resource.
 
@@ -76,7 +72,7 @@ public void PrintInfo () {
 }
 ```
 
-### Nesting objects
+## Nesting objects
 
 We are not bound to any hierarchies, any valid JSON is a valid configuration object. Take for example a hypothetical webserver configuration:
 
@@ -119,7 +115,7 @@ public void StartWebserver () {
 }
 ```
 
-### "Magic" prevention of null pointer exceptions
+## "Magic" prevention of null pointer exceptions
 
 Choosing reasonable default values is only a matter of supplying a good default.conf. But using some C# 4.0 dynamic "magic", non-existent configuration values will not throw a NullPointer exception:
 
